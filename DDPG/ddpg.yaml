@@ -1,0 +1,28 @@
+# 指定启动的服务名称:
+services:
+  - name: learner
+    path: 'learner.py'
+    num: 1
+    kwargs:
+      save_interval: 30
+      gamma: 0.9
+      lr: 0.001
+      buffer_size: 10000
+      batch_size: 32
+      tau: 0.02
+
+  - name: actor
+    path: 'actor.py'
+    num: 1
+# 指定需要启动的环境
+
+envs:
+  - name: env
+    path: 'env.py'
+    num: 4
+
+log_dir: './log'
+env_name: 'Pendulum-v0'
+ACTOR_MODEL_PATH: "model/actor.pth"
+CRITIC_MODEL_PATH: "model/critic.pth"
+eval_model: False
